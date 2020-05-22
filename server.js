@@ -26,13 +26,12 @@ bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
 
 //START_SYNC
 
-bcrypt.hashSync(myPlaintextPassword, saltRounds, (err, hash) => {
-  console.log(hash);
-  //$2a$12$Y.PHPE15wR25qrrtgGkiYe2sXo98cjuMCG1YwSI5rJW1DSJp0gEYS
-  bcrypt.compareSync(myPlaintextPassword, hash, (err, res) => {
-    console.log(res); //true
-  });
-});
+var hash = bcrypt.hashSync(myPlaintextPassword, saltRounds)
+console.log(hash);
+
+var result = bcrypt.compareSync(myPlaintextPassword, hash)
+console.log(result); //true
+
 
 //END_SYNC
 
